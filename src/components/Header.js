@@ -1,9 +1,11 @@
 import logo from '../assets/logo.jpg'
 import Button from './UI/Button'
 import CartContext from './store/CartContext'
+import Modal from './UI/Modal'
 import { useContext, useEffect, useState } from 'react'
 
 const Header = () => {
+    const [showModal, setShowModal] = useState(false);
     const [cartAmount, setCartAmount] = useState(0)
     const cartCtx = useContext(CartContext);
 
@@ -11,15 +13,24 @@ const Header = () => {
        setCartAmount(cartCtx.items.reduce((sum, item) => sum + item.quantity, 0));
     }, [cartCtx.items]);
     return (
-        <header id="main-header">
-            <div id="title">
-                <img src={logo}/>
-                <h1>React Food Order App</h1>
-            </div>
-            <nav>
-            <Button textOnly>Cart ({cartAmount})</Button>
-            </nav>
-        </header>
+        <>
+            <header id="main-header">
+                <div id="title">
+                    <img src={logo}/>
+                    <h1>React Food Order App</h1>
+                </div>
+                <nav>
+                    <Button textOnly onClick={() => setShowModal(true)}>
+                        Cart ({cartAmount})
+                    </Button>
+                </nav>
+            </header>
+            <Modal open={showModal} onClose={() => setShowModal(false)}>
+                <h2>Your Cart</h2>
+                {/* Add cart content here */}
+                <Button onClick={() => setShowModal(false)}>Close</Button>
+            </Modal>
+        </>
     )
 }
 
