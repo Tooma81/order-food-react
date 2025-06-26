@@ -8,7 +8,7 @@ const Header = () => {
     const cartCtx = useContext(CartContext);
 
     useEffect(() => {
-       setCartAmount(cartCtx.items.length);
+       setCartAmount(cartCtx.items.reduce((sum, item) => sum + item.quantity, 0));
     }, [cartCtx.items]);
     return (
         <header id="main-header">
