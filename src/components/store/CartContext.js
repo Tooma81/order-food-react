@@ -3,6 +3,7 @@ import { createContext, useState } from 'react';
 const CartContext = createContext({
     items: [],
     addMeal: (meal) => {},
+    clearMeals: () => {}
 })
 
 export const CartProvider = ({ children }) => {
@@ -28,9 +29,14 @@ export const CartProvider = ({ children }) => {
         })
     };
 
+    const clearMeals = () => {
+        setItems([]);
+    };
+
     const contextValue = {
         items,
-        addMeal
+        addMeal,
+        clearMeals
     }
     return(
         <CartContext.Provider value={contextValue}>

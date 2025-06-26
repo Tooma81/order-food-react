@@ -227,6 +227,11 @@ h1 {
   background-color: rgba(0, 0, 0, 0.55);
 }
 
+.modal .text-button {
+  color: #000;
+  margin-right: 1rem;
+}
+
 @keyframes fade-slide-up {
   from {
     opacity: 0;
