@@ -1,3 +1,5 @@
+import Button from './UI/Button'
+
 const MealItem = (props) => {
     const { name, price, description, image } = props.meal;
 
@@ -12,7 +14,7 @@ const MealItem = (props) => {
                 <p className="meal-item-description">{description}</p>
                 <p className="meal-item-price">{formattedPrice}</p>
                 <div className="meal-item-actions">
-                    <button className="button">Add to Cart</button>
+                    <Button>Add to Cart</Button>
                 </div>
             </article>
         </li>       
